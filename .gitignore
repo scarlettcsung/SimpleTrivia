@@ -217,5 +217,5 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-json/*
-!json/trivia_template.json
+jsons/*
+!jsons/trivia_template.json
