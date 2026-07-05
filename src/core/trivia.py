@@ -8,7 +8,6 @@ def pick_random_question(category_object:list):
     else:
         return None
     return question
-import random
 
 def give_question(question_object:dict):
     return question_object["question"]
