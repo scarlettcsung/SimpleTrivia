@@ -50,4 +50,5 @@ def home_page():
 
     ui.select(options=files, label='Choose a category file', on_change=on_change)
 
+
 ui.run()
