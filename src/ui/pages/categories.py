@@ -12,7 +12,7 @@ def categories_page():
     with ui.column().classes('w-full items-center'):
         ui.label('Choose a Category').classes('text-h2')
 
-    with ui.grid(columns=2).classes('w-full gap-4 p-8'):
+    with ui.grid(columns=3).classes('w-full gap-4 p-8'):
         for category in state.current_trivia.keys():
             # Check if there are any questions left for this specific category
             available = state.get_available_questions(category)
