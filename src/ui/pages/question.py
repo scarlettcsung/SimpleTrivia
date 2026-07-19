@@ -21,20 +21,30 @@ def game_page():
 
             q_obj = random.choice(available)
 
-            # --- THE TIMER ---
+            print(f"Question: {q_obj['question']} \n\n\nAnswer: {q_obj['answer']}")
+
             timer_seconds = 60
-            timer_label = ui.label(f'Time: {timer_seconds}s').classes('text-5xl font-bold text-red-600')
+            timer_label = ui.label(f'Time: {timer_seconds}s').classes('text-4xl font-bold text-purple-700')
 
-            def update_timer():
-                nonlocal timer_seconds
-                timer_seconds -= 1
-                timer_label.set_text(f'Time: {timer_seconds}s')
-                if timer_seconds <= 0:
-                    timer.deactivate()
-                    timer_label.set_text("Time's up!")
+            # This will hold the timer object once it's started
+            timer = None
 
-            timer = ui.timer(1.0, update_timer)
-            # -----------------
+            def start_timer():
+                nonlocal timer
+                start_btn.set_visibility(False)
+
+                def count():
+                    nonlocal timer_seconds
+                    timer_seconds -= 1
+                    timer_label.set_text(f'Time: {timer_seconds}s')
+                    if timer_seconds <= 0:
+                        timer.deactivate()
+                        timer_label.set_text("Time's up!")
+
+                timer = ui.timer(1.0, count)
+
+            # The "Start" button triggers the sequence
+            start_btn = ui.button('Start Timer', on_click=start_timer).classes('text-2xl p-4').props('color=purple')
 
             # Huge, centered text
             ui.label(q_obj["question"]).classes('text-6xl font-bold mb-10')
